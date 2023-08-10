@@ -1,0 +1,46 @@
+from PyQt5.QtWidgets import *
+
+app = QApplication([])
+
+window = QWidget()
+quest = QLabel('скільки?')
+
+ans1 = QRadioButton('8')
+ans2 = QRadioButton('яблуко')
+ans3 = QRadioButton('3')
+ans4 = QRadioButton('قضيب')
+
+mainline = QVBoxLayout()
+
+
+mainline.addWidget(quest)
+
+
+h1 = QHBoxLayout()
+h2 = QHBoxLayout()
+h1.addWidget(ans1)
+h1.addWidget(ans2)
+h2.addWidget(ans3)
+h2.addWidget(ans4)
+mainline.addLayout(h1)
+mainline.addLayout(h2)
+
+def show_win():
+    victory_win = QMessageBox()
+    victory_win.setText('вірно')
+    victory_win.exec_()
+
+def show_lose():
+    victory_lose = QMessageBox()
+    victory_lose.setText('лох тупий')
+    victory_lose.exec_()
+
+window.setLayout(mainline)
+
+
+window.show()
+ans1.clicked.connect(show_lose)
+ans3.clicked.connect(show_lose)
+ans4.clicked.connect(show_lose)
+ans2.clicked.connect(show_win)
+app.exec()
